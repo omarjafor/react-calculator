@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Calculator() {
   const [currentInput, setCurrentInput] = useState("");
-  const [answer, setAnswer] = useState(0);
+  const [result, setResult] = useState(0);
 
   function appendValue(number) {
     setCurrentInput((prev) => prev + number);
@@ -10,7 +10,7 @@ function Calculator() {
 
   function clearDisplay() {
     setCurrentInput("");
-    setAnswer(0);
+    setResult(0);
   }
 
   function deleteLast() {
@@ -19,9 +19,9 @@ function Calculator() {
 
   function calculateResult() {
     try {
-      setAnswer(eval(currentInput)); // Be cautious using eval
+      setResult(eval(currentInput)); // Be cautious using eval
     } catch (error) {
-      setAnswer("Error");
+      setResult("Error");
       console.error(error);
     }
   }
@@ -30,7 +30,7 @@ function Calculator() {
     <div className="calculator">
       <div className="display">
         <div id="history">{currentInput || "0"}</div>
-        <div id="result">{answer}</div>
+        <div id="result">{result}</div>
       </div>
       <div className="buttons">
         <button onClick={() => appendValue("/")}>/</button>
